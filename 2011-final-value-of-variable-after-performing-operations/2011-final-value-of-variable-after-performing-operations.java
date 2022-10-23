@@ -6,16 +6,15 @@ class Solution {
         
         for(int i = 0; i<operations.length; i++)
         {
-            if(operations[i].contains("++"))
+            if(operations[i].contains("+"))
             {
                 z++;
             }
-            if(operations[i].contains("--"))
+            if(operations[i].contains("-"))
             {
                 z--;
             }
-            else
-                continue;
+
             
         }
         
