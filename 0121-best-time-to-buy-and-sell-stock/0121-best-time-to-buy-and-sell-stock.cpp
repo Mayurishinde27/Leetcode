@@ -8,11 +8,11 @@ public:
         for(int i = 0; i<prices.size()-1; i++)
         {
             minimum = min(minimum,prices[i]);
-            profit = min(profit,minimum-prices[i+1]);  
+            profit = max(profit,prices[i+1]-minimum);  
             
             
         }
-        return (profit)*(-1);
+        return profit;
         
     }
 };
