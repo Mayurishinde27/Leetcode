@@ -7,25 +7,18 @@ public:
         string str2 = "";
         for(int i = 0; i<word1.size(); i++)
         {
-            //str1 = strcat(str1,word1[i]);
             str1 += word1[i];
         }
         for(int i = 0; i<word2.size(); i++)
         {
-            //str2 = strcat(str2,word2[i]);
             str2 += word2[i];
         }
-        
-        // if(str1 == str2)
-        // {
-        //     return true;
-        // }
-        
-        int i = 0, j = 0;
+    
         if(str1.size() != str2.size())
         {
             return false;
         }
+        int i = 0, j = 0;
         while(i<str1.size() && j<str2.size())
         {
             if(str1[i]==str2[j])
