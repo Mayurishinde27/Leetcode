@@ -31,6 +31,9 @@ public:
                {   
                    it = words.begin();
                    words.erase(it + 1 + i--);
+                   // if both the words are anagram then delete the next word 
+                   // i.e (it+1) and decrease the index by 1 so that it will chrck 
+                   // from begining.
                }
            }
         return words;
