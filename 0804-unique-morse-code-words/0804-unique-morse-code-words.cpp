@@ -2,7 +2,7 @@ class Solution {
 public:
     string word(string v)
     {
-                string arr[30] = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+                string arr[26] = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
         vector<string> vec;
         int i = 0;
         string c = "";
@@ -13,16 +13,6 @@ public:
             i++;
         }
         return c;
-//         vec.push_back(c);
-//         int result = 0;
-//         unordered_map<string,int> m;
-//         for(auto x:v)
-//         {
-//             m[x]++;
-//         }
-        
-//         result = m.size();
-//         return result;
     
     }
     int uniqueMorseRepresentations(vector<string>& words) 
