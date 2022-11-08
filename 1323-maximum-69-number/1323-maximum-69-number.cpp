@@ -3,7 +3,7 @@ public:
     int maximum69Number (int num)
     {
         int a = num;
-        string s = to_string(a);
+        string s = to_string(a); // convert int to string
         int count = 0;
         
         for(int i = 0; i<s.size(); i++)
@@ -21,7 +21,7 @@ public:
             return num;
         }
         
-        int n = stoi(s);
+        int n = stoi(s); // convert string to int
         return n;
         
 //         vector<int> v;
