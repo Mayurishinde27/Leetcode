@@ -1,25 +1,34 @@
 class Solution {
 public:
+    
+    int vowel(char ch)
+    {
+        if(ch=='a' || ch=='e' || ch=='i' || ch=='o' || ch=='u' || ch=='A'|| ch=='E' ||ch=='I'||ch=='O'||ch=='U' )
+        {
+            return 1;
+        }
+        return 0;
+            
+    }
     string reverseVowels(string s)
     {
         int i = 0;
         int j = s.size();
-
         
         while(i<=j)
         {
-            if((s[i]=='a' || s[i]=='A' || s[i]=='e' || s[i]=='E'  || s[i]=='i' || s[i]=='I' || s[i]=='o' || s[i]=='O' || s[i]=='u' || s[i]=='U') && (s[j]=='a' || s[j]=='A' || s[j]=='e' || s[j]=='E' || s[j]=='i' || s[j]=='I'  || s[j]=='o' || s[j]=='O'  || s[j]=='u' || s[j]=='U'))
+            if(vowel(s[i]) && vowel(s[j]))
             {
                 swap(s[i],s[j]);
                 i++;
                 j--;
             }
-            else if(s[i]!='a' && s[i]!='e' && s[i]!='i' && s[i]!='o' && s[i]!='u' && s[i]!='A' && s[i]!='E' && s[i]!='I' &&s[i]!='O' && s[i]!='U')
+            else if(!vowel(s[j]))
             {
-                i++;
+                j--;
             }
             else
-                j--;
+                i++;
         }
         return s;
         
