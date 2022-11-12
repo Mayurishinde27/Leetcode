@@ -49,7 +49,7 @@ public:
     }
     
     int Front() {
-        if(not isEmpty()) {
+        if(!isEmpty()) {
             if(start==queue_size)
             { 
                 start=0;
@@ -60,11 +60,11 @@ public:
     }
     
     int Rear() {
-        if(not isEmpty()) {
-            if(end==0)
-            {
-                end=1;
-            }
+        if(!isEmpty()) {
+            // if(end==0)
+            // {
+            //     end=1;
+            // }
             return data[end-1];
         }
         return -1;
