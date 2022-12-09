@@ -15,10 +15,6 @@ public:
         string str = "";
         vector<pair<char,int>> v(m.begin(),m.end());
         sort(v.begin(),v.end(),cmp);
-        // for(auto y:m)
-        // {
-        //     v.push_back(make_pair(y.second,y.first));
-        // }
         
         for(int i = 0; i<v.size(); i++)
         {
@@ -27,24 +23,7 @@ public:
                 str += v[i].first;
             }
         }
-//         for(auto x:v)
-//         {
-//             int p = x.first;
-//             while(p--)
-//             {
-//                 vec.push_back(x.second);
-//             }
-//         }
-        
-//         for(int i=0; i<v.size(); i++)
-//         {
-//             int p = v[i].first;
-//             while(p--)
-//             {
-//                 vec.push_back(v[i].second);
-//             }
-//         }
-//         str = vec;
+
         return str;
         
     }
