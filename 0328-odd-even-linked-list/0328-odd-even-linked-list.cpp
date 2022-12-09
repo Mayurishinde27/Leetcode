@@ -16,19 +16,20 @@ public:
         {
             return head;
         }
-        ListNode * fast = head -> next;
-        ListNode* slow = head;
-        ListNode * result = fast;
         
-        while(fast!=NULL && fast->next!=NULL)
+        ListNode* odd = head;
+        ListNode * even = head -> next;
+        ListNode * result = even;
+        
+        while(even!=NULL && even->next!=NULL)
         {
-            slow -> next = fast -> next;
-            slow = slow -> next;
-            fast -> next = slow -> next;
-            fast = fast -> next;
+            odd -> next = odd -> next -> next;
+            odd = odd -> next;
+            even -> next = even -> next -> next;
+            even = even -> next;
             
         }
-        slow -> next = result;
+        odd -> next = result;
         return head;
     }
 };
