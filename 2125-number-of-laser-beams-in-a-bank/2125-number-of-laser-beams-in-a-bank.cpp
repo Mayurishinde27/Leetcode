@@ -2,17 +2,7 @@ class Solution {
 public:
     int check(string s)
     {
-        // int count = 0;
-        // int num = stoi(s);
-        // while(num)
-        // {
-        //     int x = num % 10;
-        //     if(x == 1)
-        //     {
-        //         count++;
-        //     }
-        //     num = num / 10;
-        // }
+
         int i = 0;
         int count = 0;
         while(s[i]!='\0')
