@@ -1,7 +1,6 @@
 class Solution {
 public:
 
-    
     int minDeletionSize(vector<string>& v)
     {
         int count;
