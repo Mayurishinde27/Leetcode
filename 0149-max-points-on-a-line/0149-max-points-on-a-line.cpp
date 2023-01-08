@@ -4,11 +4,13 @@ public:
     {
         int count = 1;
         
-        for(int i = 0; i<point.size(); i++)
+        int maxr = point.size();
+        
+        for(int i = 0; i<maxr; i++)
         {
             unordered_map<double,int> m;
             
-            for(int j = 0; j<point.size(); j++)
+            for(int j = 0; j<maxr; j++)
             {
                 if(i == j)
                 {
