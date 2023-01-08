@@ -2,11 +2,11 @@ class Solution {
 public:
     int xorBeauty(vector<int>& nums)
     {
-        
-        for(int i = 1; i<nums.size(); i++)
+        int res = 0;
+        for(int i = 0; i<nums.size(); i++)
         {
-            nums[0] = nums[0] ^ nums[i]; 
+            res ^= nums[i]; 
         }
-        return nums[0];
+        return res;
     }
 };
