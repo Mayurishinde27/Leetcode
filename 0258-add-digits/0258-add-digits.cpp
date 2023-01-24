@@ -22,21 +22,9 @@ public:
         {
             return num;
         }
-        int res = 0;
 
         int ans = cal(num);
-        
-        
-        // if(ans > 9)
-        // {
-        //     res = cal(ans);
-        //     while(ans<10)
-        //     {
-        //         res = cal(ans);
-        //     }
-        //     return res;
-        // }
-        
+    
         return ans;
         
     }
