@@ -2,24 +2,12 @@ class Solution {
 public:
     int search(vector<int>& nums, int target)
     {
-        int i = 0;
-        int j = nums.size()-1;
-        int mid;
-        while(i<=j)
+        int n = nums.size();
+        int res = lower_bound(nums.begin(),nums.end(),target) - nums.begin();
+        
+        if(res != n && nums[res] == target)
         {
-            mid = i+(j-i)/2;
-            if(nums[mid]==target)
-            {
-                return mid;
-            }
-            if(nums[mid]<target)
-            {
-                i = mid+1;
-            }
-            else
-            {
-                j = mid-1;
-            }
+            return res;
         }
         return -1;
         
