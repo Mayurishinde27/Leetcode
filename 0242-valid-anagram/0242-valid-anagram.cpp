@@ -12,8 +12,7 @@ public:
         {
             m1[x]++;
         }
-        
-        for(auto x: s2)
+        for(auto x:s2)
         {
             m1[x]--;
             if(m1[x]<0)
