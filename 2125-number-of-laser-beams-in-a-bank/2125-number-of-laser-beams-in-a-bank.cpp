@@ -25,7 +25,7 @@ public:
             int p = check(bank[i]);
             if(p > 0)
             {
-                v.push_back(p);
+                v.push_back(p);  // [3,2,1]
             }
             
         }
