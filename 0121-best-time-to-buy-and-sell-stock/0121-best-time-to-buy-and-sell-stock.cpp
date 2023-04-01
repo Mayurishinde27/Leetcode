@@ -8,8 +8,6 @@ public:
         {
             minimum = min(minimum,prices[i]); 
             profit = max(profit,prices[i+1]-minimum); 
-            
-            
         }
         return profit;
     }
