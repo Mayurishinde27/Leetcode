@@ -2,14 +2,28 @@ class Solution {
 public:
     int search(vector<int>& nums, int target)
     {
-        int n = nums.size();
-        int res = lower_bound(nums.begin(),nums.end(),target) - nums.begin();
-        // return target's index if it is present in an array else n;
-        
-        if(res != n && nums[res] == target)
+        int i = 0;
+        int j = nums.size()-1;
+ 
+            
+        while(i<=j)
         {
-            return res;
+            int mid = i +(j-i)/2;
+
+            if(nums[mid] == target)
+            {
+                return mid;
+            }
+            if(nums[mid] < target)
+            {
+                i = mid+1;
+            }
+            else
+            {
+                j = mid - 1;
+            }
         }
+        
         return -1;
         
     }
