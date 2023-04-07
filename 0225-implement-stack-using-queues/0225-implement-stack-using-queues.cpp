@@ -16,13 +16,15 @@ public:
         
     }
     
-    int pop() {
+    int pop()
+    {
         int n = q.front();
         q.pop();
-       return n;
+        return n;
     }
     
-    int top() {
+    int top()
+    {
         return q.front();
     }
     
