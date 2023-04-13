@@ -4,58 +4,19 @@ public:
     {
 
         stack<int> st;
-        int j = 0;
-        for(int i = 0; i<pushed.size(); i++)
+        int j = 0,i = 0;
+        while(i<pushed.size())
         {
             st.push(pushed[i]);
-            
+            i++;
             while(!st.empty() && st.top() == popped[j])
             {
                 st.pop();
                 j++;
             }
         }
-        if(!st.empty())
-        {
-            return 0;
-        }
-        return 1;
+        return st.empty();
 
-        // st.push(pushed[0]);
-        //     while(j<popped.size())
-        //     {
-        //         while(!st.empty() && st.top() == popped[j])
-        //         {
-        //             st.pop();
-        //             j++;
-        //         }
-        //         if(i < pushed.size())
-        //         {
-        //             st.push(pushed[i]);
-        //             i++;
-        //         }
-                
-                
-                // if(i >= pushed.size())
-                // {
-                //     i--;
-                // }
-                
-                // if(i < pushed.size())
-                // {
-                //     i++;
-                // }
-            // }
-            // if(pushed[i] != popped[i])
-            // {
-            //     st.push(pushed[i]);
-            // }
-            // // 1,2,3
-            // if(popped[i] == pushed[i])
-            // {
-            //     continue;
-            // }
-        // }
 
         
     }
