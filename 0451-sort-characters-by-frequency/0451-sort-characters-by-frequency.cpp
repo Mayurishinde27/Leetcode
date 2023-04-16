@@ -1,30 +1,33 @@
 class Solution {
 public:
-    static bool cmp(pair<char,int> & a , pair<char,int> & b)
+    string frequencySort(string s)
     {
-        return a.second > b.second;
-    }
-    string frequencySort(string s) 
-    {
+        priority_queue<pair<int,char>> p;
+        string str = "";
         unordered_map<char,int> m;
-        for(auto x:s)
+        
+        for(auto x: s)
         {
             m[x]++;
         }
-        
-        string str = "";
-        vector<pair<char,int>> v(m.begin(),m.end());
-        sort(v.begin(),v.end(),cmp);
-        
-        for(int i = 0; i<v.size(); i++)
+        for(auto x: m)
         {
-            for(int j = 0; j<v[i].second; j++)
-            {
-                str += v[i].first;
-            }
+            p.push({x.second,x.first});
         }
-
-        return str;
         
+        while(!p.empty())
+        {
+            // str += string(p.top().first,p.top().second); 
+            char ch = p.top().second;
+            int freq = p.top().first;
+            
+            while(freq--)
+            {
+                str += ch;
+                
+            }
+            p.pop();
+        }
+        return str;
     }
 };
