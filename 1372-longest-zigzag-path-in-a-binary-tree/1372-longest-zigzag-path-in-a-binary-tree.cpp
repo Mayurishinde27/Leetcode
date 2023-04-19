@@ -27,9 +27,7 @@ public:
     int longestZigZag(TreeNode* root)
     {
         int ans = 0;
-        int lh = 0;
-        int rh = 0;
-        depth(root,ans,lh,rh);
+        depth(root,ans,0,0);
         return ans;
     }
 };
