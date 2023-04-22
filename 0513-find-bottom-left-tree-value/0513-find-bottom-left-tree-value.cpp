@@ -25,7 +25,8 @@ public:
         rightView(root->right,level+1,right);
         
     }
-    int findBottomLeftValue(TreeNode* root) {
+    int findBottomLeftValue(TreeNode* root)
+    {
         vector<int> right;
         rightView(root,0,right);
         int n = right.size();
