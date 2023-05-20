@@ -13,10 +13,9 @@ public:
     void insert(string word)
     {
         TrieNode *run = node;
-        int index;
         for(int i = 0; i< word.size(); i++)
         {
-            index = word[i]-'a';
+            int index = word[i]-'a';
             if(!run -> next[index])
             {
                 run -> next[index] = new TrieNode();
@@ -29,10 +28,9 @@ public:
     bool search(string word)
     {
         TrieNode *run = node;
-        int index;
         for(int i = 0; i < word.size(); i++)
         {
-            index = word[i]-'a';
+            int index = word[i]-'a';
             if(!run->next[index])
             {
                 return 0;
@@ -45,10 +43,9 @@ public:
     bool startsWith(string prefix)
     {
         TrieNode *run = node;
-        int index;
         for(int i = 0; i < prefix.size(); i++)
         {
-            index = prefix[i]-'a';
+            int index = prefix[i]-'a';
             if(!run->next[index])
             {
                 return 0;
