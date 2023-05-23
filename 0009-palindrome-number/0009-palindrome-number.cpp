@@ -1,13 +1,16 @@
 class Solution {
 public:
-    void reverse(int i,int j, vector<char> &s)
+    int reverse(int i,int j, vector<char> &s)
     {
-        if( i >= j)
+        if( i >= j/2)
         {
-            return;
+            return 1;
         }
-        swap(s[i],s[j]);
-        reverse(i+1,j-1,s);
+        if(s[i] != s[j-i-1])
+        {
+            return false;
+        }
+        return reverse(i+1,j,s);
     }
     bool isPalindrome(int x)
     {
@@ -19,21 +22,8 @@ public:
             v.push_back(str[i]);
         }
         int i = 0; 
-        int j = str.size()-1;
-        reverse(i,j,v);
-        
-        string after = "";
-        
-        for(int i = 0; i<str.size(); i++)
-        {
-            after += v[i];
-        }
-        
-        if(str == after)
-        {
-            return true;
-        }
-        return false;
+        int j = str.size();
+        return reverse(i,j,v);
         
     }
 };
