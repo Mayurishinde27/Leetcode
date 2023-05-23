@@ -9,9 +9,7 @@ public:
         {
             m[heights[i]] = names[i];
         }
-        
-        // sort(heights.begin(),heights.end());
-        
+
         for(auto x:m)
         {
             v.push_back(x.second);
