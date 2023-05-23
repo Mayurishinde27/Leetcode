@@ -3,7 +3,7 @@ public:
     vector<string> sortPeople(vector<string>& names, vector<int>& heights)
     {
         vector<string> v;
-        map<int,string> m;
+        map<int,string,greater<int>> m;
         
         for(int i = 0; i<names.size(); i++)
         {
@@ -14,7 +14,7 @@ public:
         {
             v.push_back(x.second);
         }
-        reverse(v.begin(),v.end());
+    
         return v;
     }
 };
