@@ -3,7 +3,7 @@ public:
     
     vector<vector<int>> v;
     
-    void permutation(vector<int> &nums, int l, int r)
+    void permutation(int l, int r,vector<int> nums)
     {
         
         if(l==r)
@@ -11,11 +11,11 @@ public:
             v.push_back(nums);
             return ;
         }
-
+        
             for(int i=l; i<=r; i++)
             {
                 swap(nums[i],nums[l]);
-                permutation(nums,l+1,r);
+                permutation(l+1,r,nums);
                 swap(nums[i],nums[l]);
             }
         
@@ -23,7 +23,7 @@ public:
     vector<vector<int>> permute(vector<int>& nums)
     {
         int n = nums.size() - 1;
-        permutation(nums,0,n);
+        permutation(0,n,nums);
         return v;
     }
 };
