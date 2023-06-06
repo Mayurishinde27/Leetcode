@@ -7,7 +7,7 @@ public:
         int m = grid[0].size();
         vector<vector<int>> vis(n,vector<int>(m,0));
         queue<pair<pair<int,int>,int>> q; // {{r,c},t}
-        // int vis[n][m];
+
         int time = 0;
         for(int i = 0; i<n; i++)
         {
