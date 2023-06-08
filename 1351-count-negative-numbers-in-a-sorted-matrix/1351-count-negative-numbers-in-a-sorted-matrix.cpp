@@ -12,10 +12,10 @@ public:
             if(grid[i][j] < 0)
             {
                 count += (n-i);
-                j = j - 1;
+                j--;
             }
             else
-                i = i + 1;
+                i++;
             
         }
         return count;
