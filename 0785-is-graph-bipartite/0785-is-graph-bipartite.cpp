@@ -1,50 +1,42 @@
 class Solution {
     
-    bool bfs(int start,vector<vector<int>>& graph,vector<int>& color)
+    bool dfs(int start, int col, vector<vector<int>> graph, vector<int> & color)
     {
-        queue<int> q;
-        q.push(start);
-        color[start] = 0;  // initially start with color 0
-        while(!q.empty())
+        color[start] = col;
+        
+        for(auto x: graph[start])
         {
-            int node = q.front();
-            q.pop();
-            
-            for(auto x: graph[node])
+            if(color[x] == -1)
             {
-                // if adj nodes are yet not colored we'll give opposite color to it
-                if(color[x] == -1)
-                {
-                    color[x] = !color[node];
-                    q.push(x);
-                }
-                // if adj nodes have same color
-                else if(color[x] == color[node])
+                if(dfs(x,!col, graph, color) == false)
                 {
                     return false;
                 }
             }
+            else if(color[x] == col)
+            {
+                return false;
+            }
         }
-        
         return true;
     }
-    
 public:
-    
     bool isBipartite(vector<vector<int>>& graph)
     {
         int n = graph.size();
         vector<int> color(n,-1);
+        
         for(int i = 0; i<n; i++)
         {
             if(color[i] == -1)
             {
-                if(!bfs(i,graph,color))
+                if(dfs(i,0,graph,color) == false)
                 {
                     return false;
                 }
             }
         }
         return true;
+        
     }
 };
