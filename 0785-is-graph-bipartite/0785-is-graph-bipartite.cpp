@@ -31,7 +31,7 @@ public:
     bool isBipartite(vector<vector<int>>& graph)
     {
         int n = graph.size();
-        vector<int> color(n+1,-1);
+        vector<int> color(n,-1);
         for(int i = 0; i<n; i++)
         {
             if(color[i] == -1)
