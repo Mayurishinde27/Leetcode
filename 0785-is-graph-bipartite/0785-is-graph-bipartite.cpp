@@ -4,7 +4,7 @@ class Solution {
     {
         queue<int> q;
         q.push(start);
-        color[start] = 0;
+        color[start] = 0;  // initially start with color 0
         while(!q.empty())
         {
             int node = q.front();
@@ -12,11 +12,13 @@ class Solution {
             
             for(auto x: graph[node])
             {
+                // if adj nodes are yet not colored we'll give opposite color to it
                 if(color[x] == -1)
                 {
                     color[x] = !color[node];
                     q.push(x);
                 }
+                // if adj nodes have same color
                 else if(color[x] == color[node])
                 {
                     return false;
@@ -28,6 +30,7 @@ class Solution {
     }
     
 public:
+    
     bool isBipartite(vector<vector<int>>& graph)
     {
         int n = graph.size();
