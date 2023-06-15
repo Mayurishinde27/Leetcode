@@ -21,7 +21,7 @@ public:
         while(!q.empty())
         {
             int size = q.size();
-            long long add = 0;
+            int add = 0;
             level++;
             for(int i = 0; i<size; i++)
             {
