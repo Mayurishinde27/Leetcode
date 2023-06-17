@@ -1,14 +1,18 @@
 class Solution {
 public:
+    
+    // bfs(int r, int c,vector<vector<int>>&vis, vector<vector<int>>& dis, vector<vector<int>>& mat )
+    // {
+    //     queue<pair<int,int>
+    // }
     vector<vector<int>> updateMatrix(vector<vector<int>>& mat)
     {
         int n = mat.size();
         int m = mat[0].size();
-        
         vector<vector<int>> vis(n,vector<int>(m,0));
-        vector<vector<int>> dist(n,vector<int>(m,0));
+        vector<vector<int>> distance(n,vector<int>(m,0));
+        queue<pair<pair<int,int>,int>> q;
         
-        queue<pair<pair<int,int>,int>> q;  // {{row,colomn},distance}
         for(int i = 0; i<n; i++)
         {
             for(int j = 0; j<m; j++)
@@ -16,38 +20,34 @@ public:
                 if(mat[i][j] == 0)
                 {
                     q.push({{i,j},0});
-                    vis[i][j] = 1;
                 }
-                
             }
         }
         
         int delrow[] = {-1,0,1,0};
         int delcol[] = {0,1,0,-1};
-
+        
         while(!q.empty())
         {
-            int r = q.front().first.first;
-            int c = q.front().first.second;
-            int d = q.front().second;
+            int row = q.front().first.first;
+            int col = q.front().first.second;
+            int dis = q.front().second;
+        
             q.pop();
             
-            dist[r][c] = d;
-            
+            distance[row][col] = dis;
             for(int i = 0; i<4; i++)
             {
-                int row = r + delrow[i];
-                int col = c + delcol[i];
+                int r = row + delrow[i];
+                int c = col + delcol[i];
                 
-                if(row >=0 && col >= 0 && row <n && col <m && !vis[row][col])
+                if(r>=0 && c>=0 && r<n && c<m && mat[r][c] == 1 && !vis[r][c])
                 {
-                    q.push({{row,col},d+1});
-                    vis[row][col] = 1;
+                    vis[r][c] = 1;
+                    q.push({{r,c},dis+1});
                 }
             }
-            
         }
-        return dist;
-        
+        return distance;
     }
 };
