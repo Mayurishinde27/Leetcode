@@ -2,7 +2,7 @@ class Solution {
     int mod = 1000000007;
     int dfs(int row, int col,vector<vector<int>>& dp, vector<vector<int>>& grid,int n, int m)
     {
-        if(dp[row][col] != -1)
+        if(dp[row][col] != 0)
         {
             return dp[row][col];
         }
@@ -31,13 +31,13 @@ public:
         
         int ans = 0;
         
-        vector<vector<int>> dp(n,vector<int> (m,-1));
+        vector<vector<int>> dp(n,vector<int> (m,0));
         
         for(int i = 0; i<n; i++)
         {
             for(int j = 0; j<m; j++)
             {
-                if(dp[i][j] == -1)
+                if(dp[i][j] == 0)
                 {
                     dfs(i,j,dp,grid,n,m);
                 }
