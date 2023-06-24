@@ -3,7 +3,12 @@ class Solution {
  public:
   int tallestBillboard(vector<int>& rods)
   {
-      int sum = accumulate(rods.begin(),rods.end(),0);
+      int sum = 0;
+      
+      for(auto x: rods)
+      {
+          sum += x;
+      }
       
       vector<int> dp(sum + 1, -1);
       dp[0] = 0;
