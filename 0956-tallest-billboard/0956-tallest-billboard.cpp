@@ -8,7 +8,7 @@ class Solution {
       vector<int> dp(sum + 1, -1);
       dp[0] = 0;
       
-      for(auto x: rods)
+      for(auto x : rods)
       {
           vector<int> temp(dp);
           for(int i = 0; i<= sum - x; i++)
@@ -17,7 +17,7 @@ class Solution {
               
               dp[i] = max(dp[i],temp[i]);  // don't use the rod
               
-              dp[i + x] = max(dp[i + x], temp[i]); // putting on taller piller
+              dp[i + x] = max(dp[i + x], temp[i]); // putting on taller billboard
               
               dp[abs(i - x)] = max(dp[abs(i - x)], temp[i] + min(i, x)); // putting on shorter one
           }
