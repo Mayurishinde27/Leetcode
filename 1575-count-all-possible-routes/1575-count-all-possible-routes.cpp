@@ -12,8 +12,9 @@ public:
         for(int i = 0; i<n; i++)
         {
             if(start != i){
-                if(abs(locations[start] - locations[i]) <= fuel){
-                    ans += dfs(i,finish,fuel - abs(locations[start] - locations[i]), locations,dp);
+                int remain_fuel = abs(locations[start] - locations[i]);
+                if( remain_fuel <= fuel){
+                    ans += dfs(i,finish,fuel - remain_fuel, locations,dp);
                     ans %= mod;
                 }
             }
