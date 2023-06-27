@@ -31,7 +31,7 @@ public:
             }
         }
         
-        int result = INT_MIN;
+        int result = 0;
         for(int i = 1; i<=n; i++){
             if(dis[i] == 1e9){
                 return -1;
