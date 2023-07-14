@@ -1,26 +1,21 @@
 class Solution {
 public:
-    // using memoization 
-    
-    int f(int n, vector<int> &dp)
+
+    int fib(int n)
     {
         // base case
         if(n <= 1) return n;
         
-        // check if dp[n] is previously calculated or not
-        if(dp[n] != -1) return dp[n];
+        vector<int> dp(n+1,-1);
+        dp[0] = 0;
+        dp[1] = 1;
         
-        return dp[n] = f(n-1,dp) + f(n-2,dp);
-    }
-    
-    int fib(int n) {
+        for(int i = 2; i<=n; i++)
+        {
+            dp[i] = dp[i-1] + dp[i-2];
+        }
         
-        vector<int> dp(n+1, -1);
-        
-        return f(n, dp);
-        
-        // TC - O(N)
-        // SC - O(N) + O(N)  {recursion stack space + dp array}
+        return dp[n];
         
     }
 };
