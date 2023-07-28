@@ -8,29 +8,29 @@ class Solution {
         
         if(day == 0)
         {
-            int maxi = INT_MAX;
+            int mini = INT_MAX;
             for(int task = 0; task <col; task++)
             {
                 if(task != last){
-                    maxi = min(maxi,grid[0][task]);
+                    mini = min(mini,grid[0][task]);
                 }
             }
-            return dp[day][last] = maxi;
+            return dp[day][last] = mini;
         }
         
 
-        int maxi = INT_MAX; 
+        int mini = INT_MAX; 
         for(int task = 0; task<col; task++)
         {
             if(task != last)
             {
                 int point = grid[day][task] + f(day-1,col,task,grid,dp);
-                maxi = min(maxi,point);
+                mini = min(mini,point);
             }
 
         }
 
-        return dp[day][last] = maxi;
+        return dp[day][last] = mini;
         
         
     }
