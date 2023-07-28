@@ -2,10 +2,6 @@ class Solution {
     
     int f(int day,int col, int last, vector<vector<int>>&grid,vector<vector<int>>&dp)
     {
-        if(day < 0) return 0;
-        
-        if(dp[day][last] != -1) return dp[day][last];
-        
         if(day == 0)
         {
             int mini = INT_MAX;
@@ -17,6 +13,8 @@ class Solution {
             }
             return dp[day][last] = mini;
         }
+        
+        if(dp[day][last] != -1) return dp[day][last];
         
 
         int mini = INT_MAX; 
