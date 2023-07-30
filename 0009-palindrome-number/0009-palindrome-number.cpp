@@ -1,18 +1,27 @@
 class Solution {
-    int start = 0;
     
-    bool solve(int idx, string str)
-    {
-        if(idx == str.size()) return true;
+//     int start = 0;
+    
+//     bool solve(int idx, string str)
+//     {
+//         if(idx == str.size()) return true;
         
-        return solve(idx+1,str) && str[start++] == str[idx];
+//         return solve(idx+1,str) && str[start++] == str[idx];
+//     }
+    bool isPalindromeHelp(int i,int j, string str)
+    {
+        
+        if(i >= j) return true;
+        
+        if(str[i] != str[j]) return false;
+        
+        return isPalindromeHelp(i+1,j-1,str);
     }
-    
     
 public:
     bool isPalindrome(int x) {
         string str = to_string(x);
-        
-        return solve(0,str);
+        int n = str.size()-1;
+        return isPalindromeHelp(0,n,str);
     }
 };
