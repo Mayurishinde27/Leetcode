@@ -1,29 +1,20 @@
 class Solution {
 public:
-    int reverse(int i,int j, vector<char> &s)
-    {
-        if( i >= j/2)
-        {
-            return 1;
-        }
-        if(s[i] != s[j-i-1])
-        {
-            return false;
-        }
-        return reverse(i+1,j,s);
-    }
-    bool isPalindrome(int x)
-    {
+    bool isPalindrome(int x) {
         string str = to_string(x);
-        vector<char> v;
+        int i = 0;
+        int j = str.size() - 1;
         
-        for(int i = 0; i<str.size(); i++)
+        while(i < j)
         {
-            v.push_back(str[i]);
+            if(str[i] != str[j])
+            {
+                return false;
+            }
+            i++;
+            j--;
         }
-        int i = 0; 
-        int j = str.size();
-        return reverse(i,j,v);
         
+        return true;
     }
 };
