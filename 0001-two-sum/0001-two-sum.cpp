@@ -4,35 +4,24 @@ public:
     {
         
         vector<int> ans;
+        unordered_map<int,int> mp;  // {val, index}
         
-        for(int i =0; i<nums.size(); i++)
+        for(int i = 0; i<nums.size(); i++)
         {
-            for(int j = i+1; j<nums.size(); j++)
+            if(mp.find(target-nums[i]) != mp.end())
             {
-                if(nums[i] + nums[j] == target)
-                {
-                    ans.push_back(i);
-                    ans.push_back(j);
-                    return ans;
-                }
+                ans.push_back(mp[target-nums[i]]);
+                ans.push_back(i);
+                return ans;
             }
+            
+            mp[nums[i]] = i;   // storing index with that number
         }
+        
         return ans;
-//         unordered_map<int,int> m;
         
-//         for(auto x: nums)
-//         {
-//             m[x]++;
-//         }
-//         vector<int> ans;
-        
-//         for(auto x: m)
-//         {
-//             if(m.find(target-x) != m.end())
-//             {
-                
-//             }
-//         }
+        // TC - O(N)
+        // SC - O(N)
         
     }
 };
