@@ -1,29 +1,28 @@
 class Solution {
-public:
+    vector<vector<int>> ans;
     
-    vector<vector<int>> v;
-    
-    void permutation(int l, int r,vector<int> nums)
+    void permute(int idx,vector<int>&nums,int n)
     {
-        
-        if(l==r)
+        if(idx == n)
         {
-            v.push_back(nums);
-            return ;
+            ans.push_back(nums);
+            return;
         }
         
-            for(int i=l; i<=r; i++)
-            {
-                swap(nums[i],nums[l]);
-                permutation(l+1,r,nums);
-                swap(nums[i],nums[l]);
-            }
+        // take 
+        for(int i = idx; i< n; i++)
+        {
+            swap(nums[idx],nums[i]);
+            permute(idx+1,nums,n);
+            swap(nums[idx],nums[i]);
+        }
         
     }
+public:
     vector<vector<int>> permute(vector<int>& nums)
     {
-        int n = nums.size() - 1;
-        permutation(0,n,nums);
-        return v;
+        int n = nums.size();
+        permute(0,nums,n);
+        return ans;
     }
 };
