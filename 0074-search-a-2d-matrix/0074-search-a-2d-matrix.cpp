@@ -5,8 +5,6 @@ public:
         int n = matrix.size();
         int m = matrix[0].size();
         
-        if( n == 0) return false;
-        
         int small = matrix[0][0];
         int large = matrix[n-1][m-1];
         
