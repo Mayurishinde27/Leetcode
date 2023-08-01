@@ -5,31 +5,35 @@ public:
         int n = matrix.size();
         int m = matrix[0].size();
         
-        int small = matrix[0][0];
-        int large = matrix[n-1][m-1];
-        
-        if(target > large || target < small) return false;
+        if(n == 0) return false;
         
         int i = 0;
-        int j = m-1;
+        int j = (n*m)-1;
         
-        while(i < n && j >=0)
+        while(i <= j)
         {
-            if(matrix[i][j] == target)
+            int mid = i + (j - i) /2;
+            
+            int row = mid / m;
+            int col = mid % m;
+            
+            if(matrix[row][col] == target)
             {
                 return true;
             }
             
-            if(matrix[i][j] < target)
+            if(matrix[row][col] < target)
             {
-                i++;
+                i = mid + 1;
             }
             else
             {
-                j--;
+                j = mid - 1;
             }
         }
         
         return false;
+        
+        //TC : O(log(N x M))
     }
 };
