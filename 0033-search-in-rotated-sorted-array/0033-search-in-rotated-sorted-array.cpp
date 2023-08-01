@@ -19,7 +19,7 @@ public:
             if(nums[low] <= nums[mid])
             {
                 // checking if the target element is exist in the left range or not
-                if(target >= nums[low] && target < nums[mid])
+                if(target >= nums[low] && target <= nums[mid])
                 {
                     high = mid - 1;
                 }
@@ -33,7 +33,7 @@ public:
             else
             {
                 // checking if the target element is exist in the right range or not
-                if(target > nums[mid] && target <= nums[high])
+                if(target >= nums[mid] && target <= nums[high])
                 {
                     low = mid + 1;
                 }
