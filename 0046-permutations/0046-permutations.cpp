@@ -24,5 +24,8 @@ public:
         int n = nums.size();
         permute(0,nums,n);
         return ans;
+        
+        //TC - O(n!)
+        //SC - O(n)
     }
 };
