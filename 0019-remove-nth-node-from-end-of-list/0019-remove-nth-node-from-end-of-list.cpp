@@ -37,5 +37,8 @@ public:
         
         return head;
         
+        // TC - O(2N)  {O(N)-for computing the length + O(N)-if we need to delete the last node of the linked list the we have to travel the entire linked list again}
+        //SC-O(1)
+        
     }
 };
