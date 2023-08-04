@@ -13,31 +13,27 @@ public:
     ListNode* removeNthFromEnd(ListNode* head, int n)
     {
         int count = 1;
+        ListNode * dummy = new ListNode();
+        dummy -> next = head;
+        ListNode * slow = dummy;
+        ListNode * fast = dummy;
         
-        ListNode * run = head;
-        
-        while(run -> next != NULL)
+        for(int i = 1; i<=n; i++)
         {
-            run = run -> next;
-            count++;
+            fast = fast -> next;
         }
         
-        if(count == n){
-            return head -> next;
-        }
-        
-        int pos = count - n;
-        
-        ListNode * ptr = head;
-        for(int i = 1; i<pos; i++)
+        while(fast -> next != NULL)
         {
-            ptr = ptr -> next;
+            fast = fast -> next;
+            slow = slow -> next;
         }
-        ptr -> next = ptr -> next -> next;
+
+        slow -> next = slow -> next -> next;
         
-        return head;
+        return dummy->next;
         
-        // TC - O(2N)  {O(N)-for computing the length + O(N)-if we need to delete the last node of the linked list the we have to travel the entire linked list again}
+        // TC - O(N)  {O(N)-if we need to delete the last node of the linked list the we have to travel the entire linked list again}
         //SC-O(1)
         
     }
