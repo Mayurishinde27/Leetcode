@@ -5,7 +5,7 @@ public:
         int n = nums.size();
         int left[n];
         int right[n];
-        vector<int> v(n);
+        vector<int> product(n);
         
         left[0] = 1;
         for(int i = 1; i<n; i++)
@@ -21,10 +21,10 @@ public:
         
         for(int i = 0; i<n; i++)
         {
-            v[i] = left[i] * right[i]; // 24,12,8,6
+            product[i] = left[i] * right[i]; // 24,12,8,6
             
         }
-        return v;
+        return product;
         
     }
 };
