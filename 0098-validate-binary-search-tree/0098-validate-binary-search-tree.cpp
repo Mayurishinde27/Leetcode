@@ -11,34 +11,54 @@
  */
 class Solution {
 public:
-    vector<int> v;
-    void inorder(TreeNode* root)
+    int MAX(TreeNode* root)
     {
-        if(root==NULL)
+        while(root -> right != NULL)
         {
-            return;
+            root = root -> right;
         }
-        inorder(root->left);
-        v.push_back(root->val);
-        inorder(root->right);
+        return root -> val;
     }
-    bool isValidBST(struct TreeNode* root)
+    int MIN(TreeNode* root)
     {
-        inorder(root);
-        for(int i=0; i<v.size(); i++)
+        while(root -> left != NULL)
         {
-            for(int j=i+1; j<v.size(); j++)
+            root = root -> left;
+        }
+        return root -> val;
+    }
+public:
+    bool isValidBST(TreeNode* root)
+    {
+        if(root == NULL) return 1;
+        if(root -> left == NULL && root-> right == NULL)
+        {
+            return 1;
+        }
+        else if(root -> left == NULL)
+        {
+            if(root->val<MIN(root->right) && isValidBST(root->right))
             {
-                if(v[i]<v[j])
-                {
-                    continue;
-                }
-                else
-                    return false;
+                return 1;
             }
         }
-        return true;
-
+        else if(root -> right == NULL)
+        {
+            if(root->val>MAX(root->left) && isValidBST(root->left))
+            {
+                return 1;
+            }
+        }
+        else
+        {
+            if(isValidBST(root -> left) && isValidBST(root -> right))
+            {
+                if(root->val>MAX(root->left) && root->val<MIN(root->right)){
+                    return 1;
+                }
+            }
+        }
+        return 0;
         
     }
 };
