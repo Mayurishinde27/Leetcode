@@ -19,7 +19,9 @@ public:
         {
             if(temp1->val == temp1->next->val)
             {
+                ListNode* del = temp1 -> next;
                 temp1->next = temp1->next->next;
+                delete del;
             }
             else
             {
