@@ -8,6 +8,7 @@ public:
             ans.push_back(v);
             return;
         }
+        
         // for taking the number
         v.push_back(nums[idx]);
         subset(idx+1,v,nums,n);
