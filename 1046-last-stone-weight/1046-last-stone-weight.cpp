@@ -4,14 +4,10 @@ public:
     {
         priority_queue<int> pq;
         
-        for(int i = 0; i<stones.size(); i++)
-        {
-            pq.push(stones[i]);
+        for(auto x: stones){
+            pq.push(x);
         }
-        if(pq.size() == 1)
-        {
-            return pq.top();
-        }
+        // 8,7,4,2,1,1
         
         while(pq.size()>1)
         {
@@ -19,10 +15,17 @@ public:
             pq.pop();
             int b = pq.top();
             pq.pop();
-            pq.push(a-b);
-
+            
+            if(a != b)
+            {
+                int c = abs(a - b);
+                pq.push(c);
+            }
         }
         
+       if(pq.size() == 0){
+           return 0;
+       }
         return pq.top();
         
     }
