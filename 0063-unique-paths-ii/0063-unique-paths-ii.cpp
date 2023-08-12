@@ -1,18 +1,18 @@
 class Solution {
     
-    int f(int i, int j, vector<vector<int>>& grid,vector<vector<int>>&dp)
+    
+    int solve(int row, int col, int n,  int m,vector<vector<int>>& obs,vector<vector<int>>& dp)
     {
-        if(i == 0 && j == 0 && !grid[i][j]) return 1;
-        if(i < 0 || j < 0) return 0;
+        if(row < 0 || col < 0 ||row > n || col > m) return 0;
+        if(obs[row][col] == 1 ) return 0;
+        if(row == n && col == m && !obs[row][col]) return 1;
         
-        if(grid[i][j] == 1) return 0;
+        if(dp[row][col] != -1) return dp[row][col];
         
-        if(dp[i][j] != -1) return dp[i][j];
+        int down = solve(row + 1, col, n, m,obs,dp);
+        int right = solve(row, col + 1, n, m,obs,dp);
         
-        int up = f(i-1,j,grid,dp);
-        int left = f(i,j-1,grid,dp);
-        
-        return dp[i][j] = up+left;
+        return dp[row][col] = down + right;
     }
 public:
     int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid)
@@ -21,7 +21,8 @@ public:
         int m = obstacleGrid[0].size();
         
         vector<vector<int>> dp(n,vector<int>(m,-1));
-        return f(n-1,m-1,obstacleGrid,dp);
+        
+        return solve(0,0,n-1,m-1,obstacleGrid,dp);
         
     }
 };
