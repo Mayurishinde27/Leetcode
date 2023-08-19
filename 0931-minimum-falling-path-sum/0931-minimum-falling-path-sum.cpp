@@ -1,75 +1,59 @@
 class Solution {
     
-//     int f(int row, int col,vector<vector<int>>& matrix,int n,vector<vector<int>>&dp)
-//     {   
-//         if(col < 0 || col > n) return 1e9;
+//     int solve(int i, int j,vector<vector<int>>& matrix,vector<vector<int>>&dp,int n)
+//     {
+//         if(i < 0 || j< 0 || i => n || j => n) return 1e9;
         
-//         if(row == 0) return matrix[0][col];
+//         if(i == n){
+//             return matrix[i][j];
+//         }
         
-//         if(dp[row][col] != -1) return dp[row][col];
+//         if(dp[i][j] != -1) return dp[i][j];
         
-//         int left = matrix[row][col] + f(row-1,col-1,matrix,n,dp);
+//         int leftD = matrix[i][j] + solve(i+1, j-1, matrix,dp, n);
+//         int rightD = matrix[i][j] + solve(i+1, j+1, matrix,dp, n);
+//         int Down = matrix[i][j] + solve(i+1, j, matrix,dp, n);
         
-//         int right = matrix[row][col] + f(row-1,col+1,matrix,n,dp);
-        
-//         int dia = matrix[row][col] + f(row-1,col,matrix,n,dp);
-        
-//         return dp[row][col] = min(dia,min(left,right));
+//         return dp[i][j] =  min(Down, min(leftD,rightD));
 //     }
 public:
     int minFallingPathSum(vector<vector<int>>& matrix)
     {
         int n = matrix.size();
-        int m = matrix[0].size();
-        vector<vector<int>> dp(n,vector<int>(m,-1));
-        
-//         int ans = INT_MAX;
-//         for(int i = 0; i<n; i++)
-//         {
-//             int val = f(n-1,i,matrix,n-1,dp);
-//             ans = min(ans,val);
-//         }
-//         return ans;
+        vector<vector<int>>dp(n, vector<int> (n,-1));
         
         for(int i = 0; i<n; i++)
         {
             dp[0][i] = matrix[0][i];
         }
         
-        for(int row = 1; row <n; row ++)
+        for(int i = 1; i<n; i++)
         {
-            for(int col = 0; col <m; col++)
+            for(int j = 0; j<n; j++)
             {
-                int left = matrix[row][col];
-                if(col-1 >= 0){
-                    left += dp[row-1][col-1];
+                int leftD = 1e9;
+                if(j-1 >= 0){
+                    leftD =  matrix[i][j] + dp[i-1][j-1];
                 }
-                else{
-                    left += 1e8;
+                
+                int rightD = 1e9;
+                
+                if(j+1<n){
+                    rightD = matrix[i][j] + dp[i-1][j+1];
                 }
-
-                int right = matrix[row][col];
-                if(col + 1 < m) {
-                    right += dp[row-1][col+1];
-                }
-                else{
-                    right += 1e8;
-                }
-
-
-                int dia = matrix[row][col] + dp[row-1][col];
-    
-
-                dp[row][col] = min(dia,min(left,right));
+                int Down = matrix[i][j] +  dp[i-1][j];
+                
+                dp[i][j] =  min(Down, min(leftD,rightD));
             }
         }
         
         int ans = INT_MAX;
-        for(int i = 0; i<m; i++)
+        
+        for(int i = 0; i<n; i++)
         {
-            int val = dp[n-1][i];
-            ans = min(ans,val);
+            ans = min(ans, dp[n-1][i]);
         }
         return ans;
+
     }
 };
