@@ -1,12 +1,13 @@
 class Solution {
-    // tabulation
+    // space optimization
 public:
     int cherryPickup(vector<vector<int>>& grid)
     {
         int n = grid.size();
         int m = grid[0].size();
         
-        vector<vector<vector<int>>> dp(n, vector<vector<int>>(m,vector<int>(m,0)));
+        vector<vector<int>> front(m, vector<int>(m,0));
+        vector<vector<int>> curr(m, vector<int>(m,0));
         
         // base case
         
@@ -14,9 +15,9 @@ public:
         {
             for(int j2 = 0; j2<m; j2++)
             {
-                if(j1 == j2) dp[n-1][j1][j2] = grid[n-1][j1];
+                if(j1 == j2) front[j1][j2] = grid[n-1][j1];
                 else{
-                    dp[n-1][j1][j2] = grid[n-1][j1] + grid[n-1][j2];
+                    front[j1][j2] = grid[n-1][j1] + grid[n-1][j2];
                 }
             }
         }
@@ -39,7 +40,7 @@ public:
                             }
 
                             if(j1+d1 >= 0 && j2+d2 >=0 && j1+d1 <m && j2+d2<m){
-                                val += dp[i+1][j1+d1][j2+d2];
+                                val += front[j1+d1][j2+d2];
                             }
                             else{
                                 val += -1e8;
@@ -49,11 +50,13 @@ public:
                         }
                     }
                     
-                    dp[i][j1][j2] = maxi;
+                    curr[j1][j2] = maxi;
                 }
             }
+            
+            front = curr;
         }
         
-        return dp[0][0][m-1];
+        return front[0][m-1];
     }
 };
