@@ -4,9 +4,10 @@ public:
     {
         int n = arr.size();
         d = d % n;
-        reverse(arr.begin(), arr.begin()+(n-d));
-        reverse(arr.begin()+(n-d), arr.end());
         reverse(arr.begin(), arr.end());
+        reverse(arr.begin(), arr.begin()+d);
+        reverse(arr.begin()+d, arr.end());
+       
         
 //         vector<int> left;
 //         int n = arr.size();
