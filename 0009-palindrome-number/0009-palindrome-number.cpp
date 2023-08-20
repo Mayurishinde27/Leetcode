@@ -1,13 +1,5 @@
 class Solution {
     
-//     int start = 0;
-    
-//     bool solve(int idx, string str)
-//     {
-//         if(idx == str.size()) return true;
-        
-//         return solve(idx+1,str) && str[start++] == str[idx];
-//     }
     bool isPalindromeHelp(int i,int j, string str)
     {
         
