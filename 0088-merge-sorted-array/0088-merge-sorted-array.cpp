@@ -19,13 +19,6 @@ public:
                 right--;
             }
         }
-
-        // while(left >=0)
-        // {
-        //     nums1[last] = nums1[left];
-        //     last--;
-        //     left--;
-        // }
         while(right >=0 ){
             nums1[last] = nums2[right];
             last--;
