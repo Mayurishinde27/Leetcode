@@ -5,7 +5,7 @@ public:
     {
         int n = s.size();
         if(n == 1) return s;
-        map<char,int> mpp;
+        unordered_map<char,int> mpp;
         
         for(auto x: s){
             mpp[x]++;
@@ -13,7 +13,6 @@ public:
                 return "";
             }
         }
-        
         
         priority_queue<pair<int,char>> pq;
         
