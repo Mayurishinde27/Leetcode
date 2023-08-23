@@ -1,49 +1,61 @@
 class Solution {
-    
+
 public:
-        string reorganizeString(string s) {
-            if (s.size() == 1)
-                return s;
-
-            unordered_map<char, int> charCount;
-            for (char c : s) {
-                charCount[c]++;
-                if (charCount[c] > (s.size() + 1) / 2) {
-                    return ""; // Impossible to rearrange
-                }
+    string reorganizeString(string s)
+    {
+        int n = s.size();
+        if(n == 1) return s;
+        map<char,int> mpp;
+        
+        for(auto x: s){
+            mpp[x]++;
+            if(mpp[x] > (n+1)/2){
+                return "";
             }
-
-            auto comp = [&](char a, char b) {
-                return charCount[a] < charCount[b];
-            };
-
-            priority_queue<char, vector<char>, decltype(comp)> pq(comp);
-            for (auto entry : charCount) {
-                pq.push(entry.first);
-            }
-
-            string result;
-            while (pq.size() >= 2) {
-                char first = pq.top(); pq.pop();
-                char second = pq.top(); pq.pop();
-
-                result += first;
-                result += second;
-
-                if (--charCount[first] > 0) {
-                    pq.push(first);
-                }
-                if (--charCount[second] > 0) {
-                    pq.push(second);
-                }
-            }
-
-            if (!pq.empty()) {
-                result += pq.top();
-            }
-
-            return result;
         }
+        
+        
+        priority_queue<pair<int,char>> pq;
+        
+        for(auto x:mpp){
+            pq.push({x.second,x.first});
+        }
+
+        string result = "";
+        
+        while(pq.size() > 1){
+            
+            char first = pq.top().second;
+            pq.pop();
+            char sec = pq.top().second;
+            pq.pop();
+            
+            result += first;
+            result += sec;
+            
+            if(--mpp[first] > 0)
+            {
+                pq.push({mpp[first], first});
+            }
+            
+            if(--mpp[sec] > 0)
+            {
+                pq.push({mpp[sec], sec});
+            }
+        }
+        
+        
+        if (!pq.empty())
+        {
+            char last = pq.top().second;
+            if(mpp[last] > 1) return "";
+            else{
+            result += last;
+            }
+        }
+
+        return result;
+    }
 
 
 //     string reorganizeString(string s)
