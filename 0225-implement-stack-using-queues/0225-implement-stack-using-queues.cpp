@@ -5,26 +5,22 @@ public:
         
     }
     
-    void push(int x) 
-    {
+    void push(int x) {
         q.push(x);
         for(int i = 0; i<q.size()-1; i++)
         {
             q.push(q.front());
             q.pop();
         }
-        
     }
     
-    int pop()
-    {
-        int n = q.front();
+    int pop() {
+        int a = q.front();
         q.pop();
-        return n;
+        return a;
     }
     
-    int top()
-    {
+    int top() {
         return q.front();
     }
     
