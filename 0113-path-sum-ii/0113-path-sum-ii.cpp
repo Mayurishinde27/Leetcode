@@ -17,13 +17,14 @@ public:
         {
             return ;
         }
+        targetSum -= root -> val;
         v.push_back(root -> val);
-        if(targetSum == root->val && root->left==NULL && root->right==NULL)
+        if(targetSum == 0 && root->left==NULL && root->right==NULL)
         {
             ans.push_back(v);
         }
-        hasPathSum(root->left,targetSum-root->val,v,ans);
-        hasPathSum(root->right,targetSum-root->val,v,ans);
+        hasPathSum(root->left,targetSum,v,ans);
+        hasPathSum(root->right,targetSum,v,ans);
         
         v.pop_back();
    
