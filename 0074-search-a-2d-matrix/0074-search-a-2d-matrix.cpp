@@ -2,26 +2,34 @@ class Solution {
 public:
     bool searchMatrix(vector<vector<int>>& matrix, int target)
     {
-        // brute force
+        // using binary search
         int n = matrix.size();
         int m = matrix[0].size();
         
-        // traversing on row wise
-        for(int i = 0; i<n; i++)
+        int i = 0;
+        int j = m*n-1;
+        
+        while(i<=j)
         {
-            // traversing on column wise
-            for(int j = 0; j<m; j++)
+            int mid = i + (j-i)/2;
+            
+            int arr = matrix[mid/m][mid%m];
+            if(arr == target){
+                return true;
+            }
+            else if(arr < target)
             {
-                if(matrix[i][j] == target){
-                    return true;
-                }
-                
+                i = mid + 1;
+            }
+            else{
+                j = mid - 1;
             }
         }
         
+        
         return false;
         
-        // TC: O(N*M)
+        // TC: O(log(N*M))
         // SC : O(1)
     }
 };
