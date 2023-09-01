@@ -12,10 +12,7 @@ public:
         for(int i = 0; i<n; i++)
         {
             curr += nums[i];
-            if(k != 0){
-                curr = curr % k;
-            }
-            
+            curr = curr % k;
             if(mp.find(curr) != mp.end()){
                 if(i - mp[curr] >= 2){
                     return true;
