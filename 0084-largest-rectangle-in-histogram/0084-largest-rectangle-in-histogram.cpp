@@ -1,58 +1,31 @@
 class Solution {
 public:
-    int largestRectangleArea(vector<int>& height)
+    int largestRectangleArea(vector<int>& histo)
     {
-        int n = height.size();
-        int leftSmall[n];
-        int rightSmall[n];
-        
+        int n = histo.size();
+        int maxA = 0;
         stack<int> st;
         
-        // for computing left small
-        
-        for(int i = 0; i<n; i++)
+        for(int i = 0; i<=n; i++)
         {
-            while(!st.empty() && height[st.top()] >= height[i])
+            while(!st.empty() && (i==n || histo[st.top()] >= histo[i]))
             {
+                int height = histo[st.top()];
                 st.pop();
-            }
-            
-            if(st.empty()) leftSmall[i] = 0;
-            else{
-                leftSmall[i] = st.top()+1;
-            }
-            st.push(i);
-        }
-
-        while(!st.empty()){
-            st.pop();
-        }
-        // for computing right small
-        
-        for(int i = n-1; i>=0; i--)
-        {
-            while(!st.empty() && height[st.top()] >= height[i])
-            {
-                st.pop();
-            }
-            
-            if(st.empty()) rightSmall[i] = n-1;
-            else{
-                rightSmall[i] = st.top()-1;
+                int width;
+                if(st.empty()){
+                    width = i;
+                }
+                else{
+                    width = i - st.top()-1;
+                }
+                
+                maxA = max(maxA, height*width);
             }
             st.push(i);
         }
         
-        int ans = 0;
-        
-        for(int i = 0; i<n; i++)
-        {
-            ans = max(ans, (rightSmall[i] - leftSmall[i] + 1) * height[i]);
-        }
-        
-        return ans;
-        
-        // TC: O(N)+O(N)+O(N)+O(N)
-        // SC: O(N)+O(N)+O(N)
+        return maxA;
+         
     }
 };
