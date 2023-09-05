@@ -7,13 +7,13 @@ public:
     
     int get(int index) {
         if(index >= 0 && index < dq.size()){
-            return dq[index];
-//             deque<int> :: iterator it = dq.begin();
-//             advance(it,index);
+            // return dq[index];
+            deque<int> :: iterator it = dq.begin();
+            advance(it,index);
 
-//             // return dq.set(it);
-//             int val = *it;
-//             return val;
+            // return dq.set(it);
+            int val = *it;
+            return val;
         }
         return -1;
     }
