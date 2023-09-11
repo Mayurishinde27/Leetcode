@@ -1,41 +1,50 @@
 class Solution {
-    public:
     
-    static bool cmp(pair<int,int>&a,pair<int,int>&b)
-    {
-        if(a.first==b.first)
+    class cmp{
+        public:
+        bool operator()(pair<int,int> &p1, pair<int,int>&p2)
         {
-            return a.second>b.second;
+            if(p1.first == p2.first)
+            {
+                return p1.second < p2.second;
+            }
+            return p1.first > p2.first;
         }
-        return a.first<b.first;
-    }
+    };
+    
+public:
     vector<int> frequencySort(vector<int>& nums)
     {
-        map<int,int> m;
+        priority_queue<pair<int,int>,vector<pair<int,int>>, cmp> pq;
+        unordered_map<int,int> mp;
         
-        //for calculating the frequency
         for(auto x:nums)
         {
-            m[x]++;
+            mp[x]++;
         }
-        vector<int>v;
-        vector<pair<int,int>> vec;
         
-        for(auto y:m)
+        for(auto x: mp)
         {
-            vec.push_back(make_pair(y.second,y.first));
+            pq.push({x.second,x.first});
         }
-        sort(vec.begin(),vec.end(),cmp);
-        for(int i=0; i<vec.size(); i++)
+        
+        vector<int> ans;
+        
+        while(!pq.empty())
         {
-            int p;
-            p = vec[i].first;
-            while(p--)
+            for(int i = 0; i<pq.top().first; i++)
             {
-                v.push_back(vec[i].second);
+                ans.push_back(pq.top().second);
             }
+                
+//             while(pq.top().first != 0)
+//             {
+//                 ans.push_back(pq.top().second);
+//                 pq.top().first--;
+//             }
+            pq.pop();
         }
-        return v;
+        return ans;
         
     }
 };
