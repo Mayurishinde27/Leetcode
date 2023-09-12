@@ -1,27 +1,28 @@
 class Solution {
 public:
-    
+    int n,m;
     void dfs(int row,int col,vector<vector<char>>&ans)
     {
-        int n = ans.size();
-        int m = ans[0].size();
-        if(row < 0 || row >= n || col <0 || col >= m || ans[row][col] == '0')
-        {
-            return;
-        }
+        int delrow[] = {-1,0,1,0};
+        int delcol[] = {0,1,0,-1};
         ans[row][col] = '0';
-        dfs(row+1,col,ans);
-        dfs(row,col+1,ans);
-        dfs(row-1,col,ans);
-        dfs(row,col-1,ans);
         
+        for(int i = 0; i<4; i++)
+        {
+            int r = row + delrow[i];
+            int c = col + delcol[i];
+            if(r>=0 && c>=0 && r<n && c<m && ans[r][c] == '1')
+            {
+                dfs(r,c,ans);
+            }
+        }
         
     }
     int numIslands(vector<vector<char>>& grid)
     {
 
-        int n = grid.size();
-        int m = grid[0].size();
+        n = grid.size();
+        m = grid[0].size();
         int count = 0;
         for(int i = 0; i<n; i++)
         {
