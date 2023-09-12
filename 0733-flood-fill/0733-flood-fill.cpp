@@ -30,6 +30,7 @@ public:
         
         dfs(sr,sc,image,ans,delRow,delCol,color,inColor);
         return ans;
-        
+        // TC = O(N x M)
+        // SC = O(N x M)
     }
 };
