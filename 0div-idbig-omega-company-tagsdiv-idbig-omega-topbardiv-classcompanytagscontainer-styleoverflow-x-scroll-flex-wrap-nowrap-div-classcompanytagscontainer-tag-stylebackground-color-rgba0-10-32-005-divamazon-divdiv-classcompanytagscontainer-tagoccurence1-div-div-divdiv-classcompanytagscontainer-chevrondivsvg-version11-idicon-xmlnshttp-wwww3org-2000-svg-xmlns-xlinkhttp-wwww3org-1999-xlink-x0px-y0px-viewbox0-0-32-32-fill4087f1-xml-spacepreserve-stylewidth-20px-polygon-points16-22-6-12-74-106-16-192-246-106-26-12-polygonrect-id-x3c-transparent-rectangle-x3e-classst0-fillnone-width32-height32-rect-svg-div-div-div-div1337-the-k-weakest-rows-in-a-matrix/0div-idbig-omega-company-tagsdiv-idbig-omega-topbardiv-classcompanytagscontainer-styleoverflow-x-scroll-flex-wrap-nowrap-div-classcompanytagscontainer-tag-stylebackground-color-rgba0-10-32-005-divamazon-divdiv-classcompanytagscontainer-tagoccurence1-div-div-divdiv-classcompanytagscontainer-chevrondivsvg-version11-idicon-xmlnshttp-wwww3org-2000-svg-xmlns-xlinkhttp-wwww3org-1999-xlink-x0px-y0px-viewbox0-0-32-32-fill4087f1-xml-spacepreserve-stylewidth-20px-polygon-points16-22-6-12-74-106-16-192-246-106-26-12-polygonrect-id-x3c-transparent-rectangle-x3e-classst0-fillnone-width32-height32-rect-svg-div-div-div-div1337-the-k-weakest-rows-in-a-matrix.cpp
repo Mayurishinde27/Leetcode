@@ -1,12 +1,22 @@
 class Solution {
+      static bool cmp(pair<int,int>&p1,pair<int,int>&p2)
+      {
+          if(p1.first < p2.first){
+              return true;
+          }
+          else if(p1.first == p2.first &&  p1.second < p2.second){
+              return true;
+          }
+          return false;
+      }
     // class cmp{
-    //   bool operator(pair<int,int>&p1,pair<int,int>&p2)
+    //   bool operator()(pair<int,int>&p1,pair<int,int>&p2)
     //   {
-    //       if(p1.first > p2.first){
+    //       if(p1.first < p2.first){
     //           return true;
     //       }
-    //       if(p1.first == p2.first){
-    //           return p1.second < p2.second;
+    //       else if(p1.first == p2.first &&  p1.second < p2.second){
+    //           return true;
     //       }
     //       return false;
     //   }
@@ -29,7 +39,7 @@ public:
             v.push_back({count,i});
         }
         
-        sort(v.begin(),v.end());
+        sort(v.begin(),v.end(),cmp);
         
         for(int i = 0; i<k; i++)
         {
