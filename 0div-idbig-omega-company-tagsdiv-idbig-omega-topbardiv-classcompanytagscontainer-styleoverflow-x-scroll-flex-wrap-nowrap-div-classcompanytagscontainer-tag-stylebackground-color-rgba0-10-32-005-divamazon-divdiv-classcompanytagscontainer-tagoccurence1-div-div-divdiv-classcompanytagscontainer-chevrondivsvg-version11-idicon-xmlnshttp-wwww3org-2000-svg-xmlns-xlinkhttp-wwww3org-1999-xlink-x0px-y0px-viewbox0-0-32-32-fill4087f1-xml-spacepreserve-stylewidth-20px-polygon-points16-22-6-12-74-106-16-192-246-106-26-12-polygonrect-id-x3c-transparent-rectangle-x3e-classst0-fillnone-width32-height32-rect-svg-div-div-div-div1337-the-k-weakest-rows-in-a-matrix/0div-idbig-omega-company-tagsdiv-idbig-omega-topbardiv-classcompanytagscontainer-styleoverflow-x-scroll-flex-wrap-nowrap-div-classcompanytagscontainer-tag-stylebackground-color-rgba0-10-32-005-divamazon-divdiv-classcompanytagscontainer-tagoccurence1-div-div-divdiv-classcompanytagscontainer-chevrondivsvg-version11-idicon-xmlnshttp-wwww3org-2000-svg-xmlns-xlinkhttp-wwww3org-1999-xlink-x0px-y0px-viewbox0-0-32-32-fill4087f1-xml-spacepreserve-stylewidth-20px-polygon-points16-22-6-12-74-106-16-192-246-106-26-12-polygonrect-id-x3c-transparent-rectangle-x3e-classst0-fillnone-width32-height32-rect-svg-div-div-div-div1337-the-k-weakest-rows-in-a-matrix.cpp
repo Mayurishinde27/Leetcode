@@ -9,18 +9,6 @@ class Solution {
           }
           return false;
       }
-    // class cmp{
-    //   bool operator()(pair<int,int>&p1,pair<int,int>&p2)
-    //   {
-    //       if(p1.first < p2.first){
-    //           return true;
-    //       }
-    //       else if(p1.first == p2.first &&  p1.second < p2.second){
-    //           return true;
-    //       }
-    //       return false;
-    //   }
-    // };
 public:
     vector<int> kWeakestRows(vector<vector<int>>& mat, int k)
     {
