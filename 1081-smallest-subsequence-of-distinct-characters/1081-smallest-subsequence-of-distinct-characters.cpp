@@ -1,38 +1,46 @@
 class Solution {
-    string help(string s)
+    string solve(string s)
     {
-        unordered_map<char,int> mp;
-        unordered_set<char> st;
+        vector<int> freq(26,0);
+        vector<int> vis(26,0);
         
+        for(auto x:s){
+            freq[x-'a'] ++;
+        }
+        
+        stack<char> st;
         string res = "";
         
-        for(auto x:s)
+        for(int i = 0; i<s.size(); i++)
         {
-            mp[x]++;
+            if(vis[s[i]-'a'] == 1){
+                freq[s[i]-'a']--;
+                continue;
+            }
+            while(!st.empty() && st.top() > s[i] && freq[st.top()-'a'] > 0){
+                vis[st.top()-'a'] = 0;
+                st.pop();
+            }
+            
+            st.push(s[i]);
+            vis[s[i]-'a'] = 1;
+            freq[s[i]-'a']--;
         }
         
-        for(auto x:s)
+        while(!st.empty())
         {
-            mp[x]--;
-            
-            if(st.count(x) == 0)
-            {
-                while(!res.empty() && x < res.back() && mp[res.back()] > 0){
-                    st.erase(res.back());
-                    res.pop_back();
-                }
-                res.push_back(x);
-                st.insert(x);
-            }
+            res += st.top();
+            st.pop();
         }
-
+        
+        reverse(res.begin(),res.end());
         return res;
+
     }
-    
 public:
     string smallestSubsequence(string s)
     {
-        return help(s);
+        return solve(s);
         
     }
 };
