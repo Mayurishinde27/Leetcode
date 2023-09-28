@@ -4,9 +4,6 @@ public:
     {
         int i = 0;
         int j = nums.size()-1;
-        
-        vector<int> v;
-        
         while(i<=j)
         {
             if(nums[i] % 2 == 0)
