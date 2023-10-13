@@ -14,7 +14,6 @@ class Solution {
                 vis[i][col] = 1;
                 matrix[i][col] = 0;
             }
-            // matrix[i][col] = 0;
         }
         
         // for row wise
@@ -25,7 +24,6 @@ class Solution {
                 vis[row][j] = 1;
                 matrix[row][j] = 0;
             }
-            // matrix[row][j] = 0;
         }
     }
 public:
