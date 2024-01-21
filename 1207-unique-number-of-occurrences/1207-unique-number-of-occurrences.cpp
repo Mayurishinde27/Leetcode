@@ -1,31 +1,21 @@
 class Solution {
 public:
-    bool uniqueOccurrences(vector<int>& arr)
-    {
-        unordered_map<int,int> m1,m2;
-        vector<int> v;
+    bool uniqueOccurrences(vector<int>& arr) {
+        unordered_map<int,int> mp;
+        for(auto x:arr){
+            mp[x]++;
+        }
         
-        for(auto x:arr)
-        {
-            m1[x]++;
-        }
-        for(auto x:m1)
-        {
-            v.push_back(x.second);
-        }
-        for(auto x:v)
-        {
-            m2[x]++;
-        }
-        for(auto x:m2)
-        {
-            if(x.second>1)
-            {
-                return false;
+        if(mp.size()<=1) return true;
+        vector<int> check ={0};
+        check.resize(arr.size());
+        
+        for(auto x: mp){
+            if(check[x.second] == 1) return false;
+            else{
+                check[x.second] = 1;
             }
         }
         return true;
-        
-        
     }
 };
